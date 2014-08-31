@@ -2,7 +2,7 @@
   "name": "perpilues",
   "private": true,
   "version": "0.0.0",
-  "description": "a Sails application",
+  "description": "an online compiler",
   "keywords": [],
   "dependencies": {
     "sails": "~0.10.5",
@@ -23,10 +23,11 @@
     "grunt-contrib-less": "0.11.1",
     "grunt-contrib-coffee": "~0.10.1",
     "sails-mongo": "0.10.4",
-    "bcrypt": "0.8.0"
+    "bcrypt": "0.8.0",
+    "shelljs": "0.3.0"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "['node app.js', 'sails lift']",
     "debug": "node debug app.js"
   },
   "main": "app.js",

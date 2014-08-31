@@ -1,0 +1,24 @@
+.home-top-header{
+	height: 40px;
+	background-color: rgb(123, 252, 221);
+}
+
+.top-links{
+	position: relative;
+	top: 10px;
+	margin-left: auto;
+	text-align: left;
+	width: 200px;
+}
+
+.form{
+	position: relative;
+	top: 200px;
+	margin-left: auto;
+	width: 400px;
+}
+
+#login{
+	height: 20px;
+	width: 300px;
+}

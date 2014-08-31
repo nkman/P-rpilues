@@ -6,6 +6,8 @@
  */
 
 module.exports = {
-	
+	lol: function(req, res){
+		return res.send("ool");
+	}
 };
 
