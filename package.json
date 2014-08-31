@@ -24,7 +24,10 @@
     "grunt-contrib-coffee": "~0.10.1",
     "sails-mongo": "0.10.4",
     "bcrypt": "0.8.0",
-    "shelljs": "0.3.0"
+    "shelljs": "0.3.0",
+    "sails-redis": "0.10.2",
+    "hiredis": "0.1.17",
+    "redis": "0.12.1"
   },
   "scripts": {
     "start": "['node app.js', 'sails lift']",
