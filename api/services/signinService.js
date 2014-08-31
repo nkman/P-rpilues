@@ -30,7 +30,7 @@ exports.login = function(username, password, cookie, cb){
 						sails.log.error(err);
 						return cb({errorMessage:"Redis cannot set the token !!",errorCode:"REDIS_ERROR"},null);
 					}
-					user.cookies = cookie['sails.sid'];
+					user.cookies = user.id +'_fcuk_'+cookie['sails.sid'];
 					return cb(null, user);
 				});
 			}
