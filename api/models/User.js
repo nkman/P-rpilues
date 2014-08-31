@@ -4,6 +4,7 @@
 * @description :: It keeps user details.
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
+var bcrypt = require('bcrypt');
 
 module.exports = {
 
@@ -31,7 +32,7 @@ module.exports = {
   		type: 'STRING',
   		minLength: 4,
   		required: true,
-  		columName: 'encryptPasswd'
+  		columnName: 'encryptPasswd'
   	}
   },
 

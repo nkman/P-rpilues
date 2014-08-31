@@ -2,26 +2,35 @@
 <html>
 	<head>
 		<title>përpilues</title>
-		<link rel="stylesheet" type="text/css" href="styles/home.css">
-		<script type="text/javascript"></script>
+		<link rel="stylesheet" type="text/css" href="/styles/home.css">
+		<script type="text/javascript" href="/js/home.js"></script>
 	</head>
 	<body>
 		<div class="home-top-header">
 			<div class="top-links">
-				<span><a href="login/">login</a></span>
-				&nbsp;&nbsp;&nbsp;<span><a href="/home/">signup</a></span>
+				<span><a href="#" onclick="login()">login</a></span>
+				&nbsp;&nbsp;&nbsp;<span><a href="#" onclick="signup()">signup</a></span>
 			</div>
 		</div>
 		<div class="home-top">
 			<div class="form">
-			<form method="post" action="signup">
-				<input id="login" type="text" name="firstName" placeholder="First Name"></br>
-				<input id="login" type="text" name="lastName" placeholder="Last Name" size=30></br>
-				<input id="login" type="text" name="phone" placeholder="phone" size=30></br>
-				<input id="login" type="text" name="username" placeholder="username" size=30></br>
-				<input id="login" type="password" name="password" placeholder="password" size=30></br>
-				<input type="submit" value="signup"></br>
-			</form>
+				<div id="signup-form">
+					<form method="post" action="/user/user">
+						<input id="login" type="text" name="firstName" placeholder="First Name"></br></br>
+						<input id="login" type="text" name="lastName" placeholder="Last Name" size=30></br></br>
+						<input id="login" type="text" name="phone" placeholder="phone" size=30></br></br>
+						<input id="login" type="text" name="username" placeholder="username" size=30></br></br>
+						<input id="login" type="password" name="password" placeholder="password" size=30></br></br>
+						<input id="signup-button" type="submit" value="signup"></br>
+					</form>
+				</div>
+				<div id="login-form">
+					<form method="post" accept="/user/login">
+						<input id="login" type="text" name="username" placeholder="username" size=30></br></br>
+						<input id="login" type="password" name="password" placeholder="password" size=30></br></br>
+						<input id="signup-button" type="submit" value="login"></br>
+					</form>
+				</div>
 			</div>
 		</div>
 	</body>

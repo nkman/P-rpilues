@@ -13,12 +13,23 @@
 
 .form{
 	position: relative;
-	top: 200px;
+	top: 100px;
 	margin-left: auto;
 	width: 400px;
 }
 
 #login{
-	height: 20px;
-	width: 300px;
+	height: 30px;
+	width: 350px;
+}
+
+#signup-button{
+	height: 30px;
+	width: 90px;
+}
+
+#login-form{
+	position: relative;
+	top: -300px;
+	visibility: hidden;
 }

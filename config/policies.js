@@ -48,4 +48,14 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+  HomeController: {
+    '*': false
+  },
+  SigninController:{
+    '*': false
+  },
+  SignupController:{
+    '*': false,
+    'user': true
+  }
 };
