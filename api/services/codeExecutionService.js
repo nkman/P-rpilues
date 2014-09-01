@@ -1,33 +1,56 @@
 var fs = require('fs');
 require('shelljs/global');
 
-exports.proceedCodeExecution = function(code, username, cb){
+exports.proceedCodeExecution = function(code, userId, cb){
 	fs.mkdir('temp',function(err){
 		if(err && err.code != 'EEXIST'){
 			return cb(err, null);
 		}
 		else{
-			fs.mkdir('temp/'+username, function(err){
-				if(err && err.code != 'EEXIST'){
+			User.findOne({id: userId}, function(err, user){
+				if(err){
 					return cb(err, null);
 				}
-				else{
-					fs.writeFile('temp/'+username+'/tempcode.c', code, function(err, wrote){
+				if(!user || user.length == 0){
+					return cb(null, "No such user");
+				}
+
+				createFolders(code, user, function(err, output){
+					if(err){
+						return cb(err, null);
+					}
+					saveCode(code, user, function(err, savedCode){
+						if(err){
+							return cb(err, null);
+						}
+						return cb(null, output);
+					});
+				});
+			});
+		}
+	});
+}
+
+function createFolders(code, user, cb){
+	fs.mkdir('temp/'+user.username, function(err){
+		if(err && err.code != 'EEXIST'){
+			return cb(err, null);
+		}
+		else{
+			fs.writeFile('temp/'+user.username+'/tempcode.c', code, function(err, wrote){
+				if(err){
+					sails.log.error(err);
+					return cb(err, null);
+				}
+				else
+					executeCode('temp/'+user.username, function(err, response){
 						if(err){
 							sails.log.error(err);
 							return cb(err, null);
 						}
 						else
-							executeCode('temp/'+username, function(err, response){
-								if(err){
-									sails.log.error(err);
-									return cb(err, null);
-								}
-								else
-									return cb(null, response);
-							});
+							return cb(null, response);
 					});
-				}
 			});
 		}
 	});
@@ -51,4 +74,13 @@ function executeCode(dir, cb){
 			return cb(null, x.output);
 		}
 	}
-} 
+}
+
+function saveCode(code, user, cb){
+	Code.create({userId: user.id, data: code}, function(err, result){
+		if(err){
+			return cb(err, null);
+		}
+		return cb(null, result);
+	});
+}

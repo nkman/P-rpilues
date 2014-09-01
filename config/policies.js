@@ -57,5 +57,9 @@ module.exports.policies = {
   SignupController:{
     '*': false,
     'user': true
+  },
+  CodeController: {
+    'code': 'isLogged',
+    'submit': 'isLogged'
   }
 };

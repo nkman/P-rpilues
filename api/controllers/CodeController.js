@@ -6,9 +6,16 @@
  */
 
 module.exports = {
+	code: function(req, res){
+		return res.view('code');
+	},
+
 	submit: function(req, res){
 		var code = req.param('code');
-		codeExecutionService.proceedCodeExecution(code, 'nkman', function(err, result){
+		var userId = req.cookies['user'].split('_fcuk_')[0];
+		if(!userId)
+			res.forbidden("Not Allowed!!");
+		codeExecutionService.proceedCodeExecution(code, userId, function(err, result){
 			if(err)
 				res.send(err, 500);
 			else

@@ -1,7 +1,7 @@
 /**
 * Code.js
 *
-* @description :: TODO: You might write a short summary of how this model works and what it represents here.
+* @description :: It keeps schema od code collection.
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
 
@@ -18,6 +18,10 @@ module.exports = {
   	keepPrivate:{
   		type: 'BOOLEAN',
   		defaulsTo: false
+  	},
+  	notes:{
+  		type: 'STRING',
+  		maxLength: 51200
   	}
   }
 };

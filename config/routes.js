@@ -39,9 +39,9 @@ module.exports.routes = {
     view: 'home'
   },
   '/code': {
-    view: 'code'
+    controller: 'CodeController',
+    action : 'code'
   }
-
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
