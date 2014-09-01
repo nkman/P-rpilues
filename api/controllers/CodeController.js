@@ -12,10 +12,14 @@ module.exports = {
 
 	submit: function(req, res){
 		var code = req.param('code');
+		var stdin = req.param('stdin');
+		var note = req.param('notes');
+
 		var userId = req.cookies['user'].split('_fcuk_')[0];
 		if(!userId)
 			res.forbidden("Not Allowed!!");
-		codeExecutionService.proceedCodeExecution(code, userId, function(err, result){
+
+		codeExecutionService.proceedCodeExecution(code, userId, stdin, note, function(err, result){
 			if(err)
 				res.send(err, 500);
 			else

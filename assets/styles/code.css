@@ -1,4 +1,62 @@
 #code-input-area{
-	height: 500px;
-	width: 400px;
+	height: 300px;
+	width: 600px;
+	margin-left: 20px;
+}
+
+#stdin-input-area{
+	height: 100px;
+	width: 600px;
+	margin-left: 20px;
+}
+
+#note-input-area{
+	height: 30px;
+	width: 600px;
+	margin-left: 20px;
+}
+
+.name{
+	margin-left: 20px;
+	margin-top: 10px;
+}
+/*
+.code-name{
+	margin-left: 20px;
+	margin-top: 10px;
+}
+
+.note-name{
+	margin-left: 20px;
+	margin-top: 10px;
+}*/
+
+#submit{
+	margin-left: 20px;
+	margin-top: 10px;
+	height: 30px;
+	width: 90px;
+}
+
+.code-space{
+	height: 600px;
+	width: 500px;
+}
+
+.top-header{
+	text-align: right;
+	height: 40px;
+	background-color: rgb(187, 231, 255);
+}
+
+#my-codes{
+	position: relative;
+	top: 10px;
+	right: 60px;
+}
+
+#logout{
+	position: relative;
+	top: 10px;
+	right: 20px;
 }

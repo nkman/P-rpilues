@@ -1,7 +1,7 @@
 var fs = require('fs');
 require('shelljs/global');
 
-exports.proceedCodeExecution = function(code, userId, cb){
+exports.proceedCodeExecution = function(code, userId, stdin, note, cb){
 	fs.mkdir('temp',function(err){
 		if(err && err.code != 'EEXIST'){
 			return cb(err, null);
@@ -15,7 +15,7 @@ exports.proceedCodeExecution = function(code, userId, cb){
 					return cb(null, "No such user");
 				}
 
-				createFolders(code, user, function(err, output){
+				createFolders(code, user, stdin, function(err, output){
 					if(err){
 						return cb(err, null);
 					}
@@ -31,7 +31,7 @@ exports.proceedCodeExecution = function(code, userId, cb){
 	});
 }
 
-function createFolders(code, user, cb){
+function createFolders(code, user, stdin, cb){
 	fs.mkdir('temp/'+user.username, function(err){
 		if(err && err.code != 'EEXIST'){
 			return cb(err, null);
@@ -42,7 +42,11 @@ function createFolders(code, user, cb){
 					sails.log.error(err);
 					return cb(err, null);
 				}
-				else
+				fs.writeFile('temp/'+user.username+'/stdin.txt', stdin, function(err, input){
+					if(err){
+						sails.log.error(err);
+						return cb(err, null);
+					}
 					executeCode('temp/'+user.username, function(err, response){
 						if(err){
 							sails.log.error(err);
@@ -51,6 +55,7 @@ function createFolders(code, user, cb){
 						else
 							return cb(null, response);
 					});
+				});
 			});
 		}
 	});
@@ -64,7 +69,7 @@ function executeCode(dir, cb){
 	}
 	else{
 		sails.log.info(x.output);
-		x = exec('cd '+dir+' && ./a.out');
+		x = exec('cd '+dir+' && cat stdin.txt | ./a.out');
 		if(x.code != 0){
 			sails.log.error(x.output);
 			return cb(x.output, null);
