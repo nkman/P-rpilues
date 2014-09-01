@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<div class="top-header">
-			<div id="header-detail"><span id="my-codes"><a href="/code/mycodes/">My Codes</a></span><span id="logout"><a href="/user/logout/">Logout</a></span></div>
+			<div id="header-detail"><span id="name">Hello <%= user.firstName%> <%= user.lastName%></span><span id="my-codes"><a href="/code/mycodes/">My Codes</a></span><span id="logout"><a href="/user/logout/">Logout</a></span></div>
 		</div>
 		<div class="code-space">
 			<div class="name"><span>enter your source code</span></div>
@@ -16,7 +16,7 @@
 			<textarea id="stdin-input-area" name="stdin" form="form-code-submit"></textarea>
 			<div class="name"><span>Add notes</span></div>
 			<textarea id="note-input-area" name="note" form="form-code-submit"></textarea>
-			<form action="submit" id="form-code-submit" method="post">
+			<form action="/code/submit" id="form-code-submit" method="post">
 				<input id="submit" type="submit" value="submit">	
 			</form>
 		</div>

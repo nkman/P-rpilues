@@ -21,7 +21,7 @@ module.exports = {
 			if(err)
 				return res.send(err, 500);
 			else
-				return res.send(result, 200);
+				return res.redirect('home');
 		});
 	},
 
@@ -40,7 +40,7 @@ module.exports = {
 			else{
 				// res.cookie('user', user.cookies, { expires: new Date(Date.now() + 900000), httpOnly: true });
 				res.cookie('user', result.cookies);
-				return res.send(result, 200);
+				return res.redirect('code');
 			}
 		});
 	},
@@ -50,7 +50,7 @@ module.exports = {
 			if(err)
 				return res.send(err, 500);
 			else
-				return res.send(logout, 200);
+				return res.redirect('home');
 		});
 	}
 };

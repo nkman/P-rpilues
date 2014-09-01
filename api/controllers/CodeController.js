@@ -7,7 +7,9 @@
 
 module.exports = {
 	code: function(req, res){
-		return res.view('code');
+		userService.userDetail(req.cookies['user'].split('_fcuk_')[0], function(err, user){
+			return res.view('code',{user: user});
+		});
 	},
 
 	submit: function(req, res){

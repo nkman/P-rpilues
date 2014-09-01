@@ -14,12 +14,11 @@ exports.proceedCodeExecution = function(code, userId, stdin, note, cb){
 				if(!user || user.length == 0){
 					return cb(null, "No such user");
 				}
-
-				createFolders(code, user, stdin, function(err, output){
+				saveCode(code, user, note, function(err, savedCode){
 					if(err){
 						return cb(err, null);
 					}
-					saveCode(code, user, note, function(err, savedCode){
+					createFolders(code, user, stdin, function(err, output){
 						if(err){
 							return cb(err, null);
 						}
@@ -49,7 +48,6 @@ function createFolders(code, user, stdin, cb){
 					}
 					executeCode('temp/'+user.username, function(err, response){
 						if(err){
-							sails.log.error(err);
 							return cb(err, null);
 						}
 						else
@@ -63,20 +61,20 @@ function createFolders(code, user, stdin, cb){
 
 function executeCode(dir, cb){
 	var x = exec('cd '+dir+' && gcc tempcode.c');
+	var calbak = {};
+	calbak.error = x.output;
 	if(x.code != 0){
-		sails.log.error(x.output);
-		return cb(x.output, null);
+		return cb(calbak, null);
 	}
 	else{
-		sails.log.info(x.output);
 		x = exec('cd '+dir+' && cat stdin.txt | ./a.out');
+		calbak.output = x.output;
 		if(x.code != 0){
-			sails.log.error(x.output);
-			return cb(x.output, null);
+			return cb(calbak, null);
 		}
 		else{
-			sails.log.info(x.output);
-			return cb(null, x.output);
+			sails.log.info("calbak is "+calbak);
+			return cb(null, calbak);
 		}
 	}
 }
