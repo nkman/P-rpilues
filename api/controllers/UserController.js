@@ -43,6 +43,15 @@ module.exports = {
 				return res.send(result, 200);
 			}
 		});
+	},
+
+	logout: function(req, res){
+		signinService.logout(req.cookies['user'].split('_fcuk_')[0], function(err, logout){
+			if(err)
+				return res.send(err, 500);
+			else
+				return res.send(logout, 200);
+		});
 	}
 };
 

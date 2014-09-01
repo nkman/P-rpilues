@@ -19,7 +19,7 @@ exports.proceedCodeExecution = function(code, userId, stdin, note, cb){
 					if(err){
 						return cb(err, null);
 					}
-					saveCode(code, user, function(err, savedCode){
+					saveCode(code, user, note, function(err, savedCode){
 						if(err){
 							return cb(err, null);
 						}
@@ -81,11 +81,20 @@ function executeCode(dir, cb){
 	}
 }
 
-function saveCode(code, user, cb){
-	Code.create({userId: user.id, data: code}, function(err, result){
+function saveCode(code, user, note, cb){
+	Code.create({userId: user.id, data: code, notes: note}, function(err, result){
 		if(err){
 			return cb(err, null);
 		}
 		return cb(null, result);
+	});
+}
+
+exports.getCodes = function(userId, count, cb){
+	Code.find({userId: userId}).limit(10).skip(10*count).then(function(err, codes){
+		if(err){
+			return cb(err, null);
+		}
+		return cb(null, codes);
 	});
 }

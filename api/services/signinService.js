@@ -37,3 +37,11 @@ exports.login = function(username, password, cookie, cb){
 		});
 	});
 }
+
+exports.logout = function(cooki, cb){
+	client.del(cooki, function(err, deleted){
+		if(err)
+			return cb(err, null);
+		return cb(null, deleted);
+	});
+};

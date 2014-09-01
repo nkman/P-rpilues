@@ -25,6 +25,17 @@ module.exports = {
 			else
 				res.send(result, 200);
 		});
+	},
+
+	mycodes: function(req, res){
+		/*Multiple of 10*/
+		var count = req.param('count');
+		codeExecutionService.getCodes(req.cookies['user'].split('_fcuk_')[0], count, function(err, codes){
+			if(err)
+				return res.send(err, 500);
+			else
+				return res.send(codes, 200);
+		});
 	}
 };
 
