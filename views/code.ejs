@@ -3,7 +3,8 @@
 	<head>
 		<title>përpilues</title>
 		<link rel="stylesheet" type="text/css" href="/styles/code.css">
-		<script type="text/javascript"></script>
+		<script type="text/javascript" href="/js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" href="/js/code.js"></script>
 	</head>
 	<body>
 		<div class="top-header">
@@ -16,9 +17,12 @@
 			<textarea id="stdin-input-area" name="stdin" form="form-code-submit"></textarea>
 			<div class="name"><span>Add notes</span></div>
 			<textarea id="note-input-area" name="note" form="form-code-submit"></textarea>
-			<form action="/code/submit" id="form-code-submit" method="post">
+			<form onclick="submitCode()" id="form-code-submit" method="post">
 				<input id="submit" type="submit" value="submit">	
 			</form>
+		</div>
+		<div class="compilation-log">
+			
 		</div>
 	</body>
 </html>
