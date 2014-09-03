@@ -40,6 +40,7 @@ module.exports = {
     bcrypt.hash(values.password, 10, function(err, hash) {
       if(err) return next(err);
       values.password = hash;
+      values.username = values.username.replace(/[^a-zA-Z0-9]/g,'');
       next();
     });
   }
