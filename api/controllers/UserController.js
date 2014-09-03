@@ -7,6 +7,13 @@
 
 module.exports = {
 	user: function(req, res){
+		sails.log("TIME: "+ new Date()+ ": "
+                +req.method+ " "
+                +req.headers.host+" "
+                +req.url+ " "
+                +JSON.stringify(req.params)+" "+req.route.params+" "+req.ip
+                );
+
 		var firstName = req.param('firstName');
 		var lastName = req.param('lastName');
 		var phone = req.param('phone');
@@ -26,6 +33,13 @@ module.exports = {
 	},
 
 	login: function(req, res){
+		sails.log("TIME: "+ new Date()+ ": "
+                +req.method+ " "
+                +req.headers.host+" "
+                +req.url+ " "
+                +JSON.stringify(req.params)+" "+req.route.params+" "+req.ip
+                );
+
 		var username = req.param('username');
 		var password = req.param('password');
 
@@ -46,6 +60,13 @@ module.exports = {
 	},
 
 	logout: function(req, res){
+		sails.log("TIME: "+ new Date()+ ": "
+                +req.method+ " "
+                +req.headers.host+" "
+                +req.url+ " "
+                +JSON.stringify(req.params)+" "+req.route.params+" "+req.ip
+                );
+		
 		signinService.logout(req.cookies['user'].split('_fcuk_')[0], function(err, logout){
 			if(err)
 				return res.send(err, 500);

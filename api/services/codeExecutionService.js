@@ -91,7 +91,6 @@ function saveCode(code, user, note, cb){
 exports.getCodes = function(userId, count, cb){
 	Code.find({userId: userId}).skip(10*count).limit(10).then(function(err, codes){
 		if(err){
-			sails.log.info(err);
 			return cb(null, err);
 		}
 		return cb(null, codes);

@@ -7,6 +7,13 @@
 
 module.exports = {
 	code: function(req, res){
+		sails.log("TIME: "+ new Date()+ ": "
+                +req.method+ " "
+                +req.headers.host+" "
+                +req.url+ " "
+                +JSON.stringify(req.params)+" "+req.route.params+" "+req.ip
+                );
+
 		userService.userDetail(req.cookies['user'].split('_fcuk_')[0], function(err, user){
 			if(err)
 				return res.send(err, 500);
@@ -18,6 +25,13 @@ module.exports = {
 	},
 
 	submit: function(req, res){
+		sails.log("TIME: "+ new Date()+ ": "
+                +req.method+ " "
+                +req.headers.host+" "
+                +req.url+ " "
+                +JSON.stringify(req.params)+" "+req.route.params+" "+req.ip
+                );
+
 		var code = req.param('code');
 		var stdin = req.param('stdin');
 		var note = req.param('notes');
@@ -36,6 +50,13 @@ module.exports = {
 
 	mycodes: function(req, res){
 		/*Multiple of 10*/
+		sails.log("TIME: "+ new Date()+ ": "
+                +req.method+ " "
+                +req.headers.host+" "
+                +req.url+ " "
+                +JSON.stringify(req.params)+" "+req.route.params+" "+req.ip
+                );
+
 		var count = req.param('count');
 		codeExecutionService.getCodes(req.cookies['user'].split('_fcuk_')[0], count, function(err, codes){
 			if(err)
@@ -48,6 +69,13 @@ module.exports = {
 	},
 
 	view: function(req, res){
+		sails.log("TIME: "+ new Date()+ ": "
+                +req.method+ " "
+                +req.headers.host+" "
+                +req.url+ " "
+                +JSON.stringify(req.params)+" "+req.route.params+" "+req.ip
+                );
+		
 		codeExecutionService.getExactCode(req.param('id'), function(err, code){
 			if(err)
 				res.send(err, 500);
