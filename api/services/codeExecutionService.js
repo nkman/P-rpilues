@@ -64,16 +64,16 @@ function executeCode(dir, cb){
 	var calbak = {};
 	calbak.error = x.output;
 	if(x.code != 0){
-		return cb(calbak, null);
+		return cb(null, calbak);
 	}
 	else{
 		x = exec('cd '+dir+' && cat stdin.txt | ./a.out');
 		calbak.output = x.output;
 		if(x.code != 0){
-			return cb(calbak, null);
+			return cb(null, calbak);
 		}
 		else{
-			sails.log.info("calbak is "+calbak);
+			sails.log.info(calbak);
 			return cb(null, calbak);
 		}
 	}

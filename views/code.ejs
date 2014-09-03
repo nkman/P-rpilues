@@ -17,12 +17,14 @@
 			<textarea id="stdin-input-area" name="stdin" form="form-code-submit"></textarea>
 			<div class="name"><span>Add notes</span></div>
 			<textarea id="note-input-area" name="note" form="form-code-submit"></textarea>
-			<form onclick="submitCode()" id="form-code-submit" method="post">
-				<input id="submit" type="submit" value="submit">	
+			<form  id="form-code-submit">
 			</form>
+			<button onclick="submitCode()" id="submit">submit</button>
 		</div>
 		<div class="compilation-log">
-			
+			<div class="msg-serv">
+				
+			</div>
 		</div>
 	</body>
 </html>

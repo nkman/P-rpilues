@@ -81,3 +81,18 @@ body{
 	margin-left: auto;
 	margin-right: 10px;
 }
+
+.Error{
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.output{
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.msg{
+	display: block;
+	font-weight: bold;
+}
