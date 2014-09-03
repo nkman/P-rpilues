@@ -8,7 +8,12 @@
 module.exports = {
 	code: function(req, res){
 		userService.userDetail(req.cookies['user'].split('_fcuk_')[0], function(err, user){
-			return res.view('code',{user: user});
+			if(err)
+				return res.send(err, 500);
+			else
+				return res.view('code',{
+					user: user, code: null
+				});
 		});
 	},
 
@@ -36,7 +41,25 @@ module.exports = {
 			if(err)
 				return res.send(err, 500);
 			else
-				return res.send(codes, 200);
+				return res.view('mycodes',{
+					code: codes
+				});
+		});
+	},
+
+	view: function(req, res){
+		codeExecutionService.getExactCode(req.param('id'), function(err, code){
+			if(err)
+				res.send(err, 500);
+			else
+				userService.userDetail(req.cookies['user'].split('_fcuk_')[0], function(err, user){
+					if(err)
+						return res.send(err, 500);
+					else
+						return res.view('code',{
+							user: user, code: code
+						});
+				});
 		});
 	}
 };

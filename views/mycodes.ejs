@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>përpilues</title>
+	</head>
+
+	<body>
+		<ul>
+		<% for(var i=0; i<code.length; i++) {%>
+		   <li><a href="/code/view/<%= code[i].id %>"><%= code[i].id %></a></li>
+		<% } %>
+		</ul>
+	</body>
+</html>

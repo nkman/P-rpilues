@@ -12,7 +12,7 @@
 		</div>
 		<div class="code-space">
 			<div class="name"><span>enter your source code</span></div>
-			<textarea id="code-input-area" name="code" form="form-code-submit"></textarea>
+			<textarea id="code-input-area" name="code" form="form-code-submit"><% if(code) { %> <%= code.data %> <% } %></textarea>
 			<div class="name"><span>Enter Input(STDIN)</span></div>
 			<textarea id="stdin-input-area" name="stdin" form="form-code-submit"></textarea>
 			<div class="name"><span>Add notes</span></div>

@@ -62,7 +62,8 @@ module.exports.policies = {
     '*': false,
     'code': 'isLogged',
     'submit': 'isLogged',
-    'mycodes': 'isLogged'
+    'mycodes': 'isLogged',
+    'view': 'isLogged'
   },
   UserController: {
     '*': false,

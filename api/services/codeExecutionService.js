@@ -89,10 +89,20 @@ function saveCode(code, user, note, cb){
 }
 
 exports.getCodes = function(userId, count, cb){
-	Code.find({userId: userId}).limit(10).skip(10*count).then(function(err, codes){
+	Code.find({userId: userId}).skip(10*count).limit(10).then(function(err, codes){
 		if(err){
-			return cb(err, null);
+			sails.log.info(err);
+			return cb(null, err);
 		}
 		return cb(null, codes);
+	});
+}
+
+exports.getExactCode = function(id, cb){
+	Code.findOne({id: id}, function(err, code){
+		if(err)
+			return cb(err, null);
+		else
+			return cb(null, code);
 	});
 }
